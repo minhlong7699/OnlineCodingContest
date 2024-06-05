@@ -2,19 +2,33 @@
 {
     public class Address
     {
+
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
         public string Street { get; private set; }
         public string City { get; private set; }
         public string State { get; private set; }
         public string Country { get; private set; }
         public string ZipCode { get; private set; }
 
-        public Address(string street, string city, string state, string country, string zipCode)
+
+
+        protected Address() { }
+        private Address(string firstName, string lastName, string street, string city, string country, string state, string zipCode)
         {
+            FirstName = firstName;
+            LastName = lastName;
             Street = street;
             City = city;
-            State = state;
             Country = country;
+            State = state;
             ZipCode = zipCode;
+        }
+
+        public static Address Of(string firstName, string lastName, string street, string city, string country, string state, string zipCode)
+        {
+
+            return new Address(firstName, lastName, street, city, country, state, zipCode);
         }
 
         protected bool Equals(Address other)

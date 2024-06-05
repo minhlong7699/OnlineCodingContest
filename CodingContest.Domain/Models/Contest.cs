@@ -1,19 +1,20 @@
 ﻿using System;
 using CodingContest.Domain.Abstractions;
 using CodingContest.Domain.Events;
+using CodingContest.Domain.ValueObjects;
 
 namespace CodingContest.Domain.Models
 {
     public class Contest : AggregateRoot<Guid>
     {
-        public string Title { get; private set; }
-        public string Description { get; private set; }
+        public Title Title { get; private set; }
+        public Description Description { get; private set; }
         public DateTime StartTime { get; private set; }
         public DateTime EndTime { get; private set; }
 
         private Contest() { }
 
-        public static Contest Create(Guid id, string title, string description, DateTime startTime, DateTime endTime)
+        public static Contest Create(Guid id, Title title, Description description, DateTime startTime, DateTime endTime)
         {
             var contest = new Contest
             {
@@ -31,7 +32,7 @@ namespace CodingContest.Domain.Models
             return contest;
         }
 
-        public void Update(string title, string description, DateTime startTime, DateTime endTime)
+        public void Update(Title title, Description description, DateTime startTime, DateTime endTime)
         {
             Title = title;
             Description = description;

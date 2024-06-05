@@ -1,21 +1,20 @@
 ﻿using System;
 using CodingContest.Domain.Abstractions;
+using CodingContest.Domain.Enums;
 using CodingContest.Domain.Events;
+using CodingContest.Domain.ValueObjects;
 
 namespace CodingContest.Domain.Models
 {
     public class User : AggregateRoot<Guid>
     {
-        public string Username { get; private set; }
-        public string Email { get; private set; }
+        public Username Username { get; private set; }
+        public Email Email { get; private set; }
         public string PasswordHash { get; private set; }
         public string PasswordSalt { get; private set; }
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string Gender { get; private set; }
+        public Gender Gender { get; private set; }
         public DateTime DOB { get; private set; }
-        public string Country { get; private set; }
-        public string City { get; private set; }
+        public Address Address { get; private set; }
         public string Bio { get; private set; }
         public string ProfilePictureUrl { get; private set; }
         public bool IsActive { get; private set; }
@@ -23,7 +22,7 @@ namespace CodingContest.Domain.Models
 
         private User() { }
 
-        public static User Create(Guid id, string username, string email, string passwordHash, string passwordSalt, string firstName, string lastName, string gender, DateTime dob, string country, string city, string bio, string profilePictureUrl)
+        public static User Create(Guid id, Username username, Email email, string passwordHash, string passwordSalt,  Gender gender, DateTime dob, Address address ,string bio, string profilePictureUrl)
         {
             var user = new User
             {
@@ -32,12 +31,9 @@ namespace CodingContest.Domain.Models
                 Email = email,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                FirstName = firstName,
-                LastName = lastName,
                 Gender = gender,
                 DOB = dob,
-                Country = country,
-                City = city,
+                Address = address,
                 Bio = bio,
                 ProfilePictureUrl = profilePictureUrl,
                 IsActive = true,
@@ -50,13 +46,10 @@ namespace CodingContest.Domain.Models
             return user;
         }
 
-        public void UpdateProfile(string firstName, string lastName, string gender, string country, string city, string bio, string profilePictureUrl)
+        public void UpdateProfile(Address newAddress, Gender gender, string bio, string profilePictureUrl)
         {
-            FirstName = firstName;
-            LastName = lastName;
+            Address = newAddress;
             Gender = gender;
-            Country = country;
-            City = city;
             Bio = bio;
             ProfilePictureUrl = profilePictureUrl;
             LastModifie = DateTime.UtcNow;
@@ -76,6 +69,16 @@ namespace CodingContest.Domain.Models
         {
             LastLogin = DateTime.UtcNow;
             LastModifie = DateTime.UtcNow;
+        }
+
+
+        public void ResetPassword(string passwordHash, string passwordSalt)
+        {
+            PasswordHash = passwordHash;
+            PasswordSalt = passwordSalt;
+            LastModifie = DateTime.UtcNow;
+
+            AddDomainEvent(new UserPasswordResetEvent(this));
         }
     }
 }
