@@ -11,6 +11,9 @@ namespace CodingContest.Domain.Models
         public string RefreshToken { get; private set; }
         public DateTime RefreshTokenExpiryDate { get; private set; }
 
+
+        public User User { get; private set; }
+
         private UserToken() { }
 
         public UserToken(Guid userId, string accessToken, DateTime accessTokenExpiryDate, string refreshToken, DateTime refreshTokenExpiryDate)

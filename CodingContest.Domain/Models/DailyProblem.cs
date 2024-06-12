@@ -8,6 +8,8 @@ namespace CodingContest.Domain.Models
         public Guid ProblemId { get; private set; }
         public string DataType { get; private set; }
 
+        public Problem Problem { get; private set; }
+
         private DailyProblem() { }
 
         public DailyProblem(Guid problemId, string dataType)

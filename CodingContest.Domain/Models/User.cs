@@ -20,6 +20,14 @@ namespace CodingContest.Domain.Models
         public bool IsActive { get; private set; }
         public DateTime? LastLogin { get; private set; }
 
+        public ICollection<UserToken> UserTokens { get; private set; } = new List<UserToken>();
+        public ICollection<UserLog> UserLogs { get; private set; } = new List<UserLog>();
+        public ICollection<UserRole> UserRoles { get; private set; } = new List<UserRole>();
+        public ICollection<UserPasswordReset> UserPasswordResets { get; private set; } = new List<UserPasswordReset>();
+        public ICollection<UserSolvedProblem> UserSolvedProblems { get; private set; } = new List<UserSolvedProblem>();
+        public ICollection<Submission> Submissions { get; private set; } = new List<Submission>();
+        public ICollection<ContestLeaderboard> ContestLeaderboards { get; private set; } = new List<ContestLeaderboard>();
+
         private User() { }
 
         public static User Create(Guid id, Username username, Email email, string passwordHash, string passwordSalt,  Gender gender, DateTime dob, Address address ,string bio, string profilePictureUrl)

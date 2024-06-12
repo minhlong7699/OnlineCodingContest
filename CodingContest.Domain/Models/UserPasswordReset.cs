@@ -9,6 +9,8 @@ namespace CodingContest.Domain.Models
         public string Token { get; private set; }
         public DateTime ExpiryDate { get; private set; }
 
+        public User User { get; private set; }
+
         private UserPasswordReset() { }
 
         public UserPasswordReset(Guid userId, string token, DateTime expiryDate)

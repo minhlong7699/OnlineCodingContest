@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CodingContest.Domain.Abstractions;
 using CodingContest.Domain.Events;
 using CodingContest.Domain.ValueObjects;
@@ -11,6 +12,10 @@ namespace CodingContest.Domain.Models
         public Description Description { get; private set; }
         public DateTime StartTime { get; private set; }
         public DateTime EndTime { get; private set; }
+
+        public ICollection<ContestLeaderboard> ContestLeaderboards { get; private set; } = new List<ContestLeaderboard>();
+        public ICollection<ContestProblem> ContestProblems { get; private set; } = new List<ContestProblem>();
+        public ICollection<Submission> Submissions { get; private set; } = new List<Submission>();
 
         private Contest() { }
 

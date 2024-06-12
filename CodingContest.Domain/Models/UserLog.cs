@@ -9,6 +9,8 @@ namespace CodingContest.Domain.Models
         public string Action { get; private set; }
         public DateTime LogTime { get; private set; }
 
+        public User User { get; private set; }
+
         private UserLog() { }
 
         public UserLog(Guid userId, string action, DateTime logTime)

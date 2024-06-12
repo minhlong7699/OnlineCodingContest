@@ -10,6 +10,9 @@ namespace CodingContest.Domain.Models
         public string DefaultCode { get; private set; }
         public bool IsActive { get; private set; }
 
+        public Problem Problem { get; private set; }
+        public Language Language { get; private set; }
+
         private ProblemLanguage() { }
 
         public ProblemLanguage(Guid problemId, Guid languageId, string defaultCode)

@@ -27,6 +27,11 @@ namespace CodingContest.Domain.Models
         private readonly List<TestCase> _testCases = new();
         public IReadOnlyList<TestCase> TestCases => _testCases.AsReadOnly();
 
+        public ICollection<ContestProblem> ContestProblems { get; private set; } = new List<ContestProblem>();
+        public ICollection<DailyProblem> DailyProblems { get; private set; } = new List<DailyProblem>();
+        public ICollection<Submission> Submissions { get; private set; } = new List<Submission>();
+        public ICollection<ProblemLanguage> ProblemLanguages { get; private set; } = new List<ProblemLanguage>();
+
         private Problem() { }
 
         public static Problem Create(Guid id, Title title, Description description, ProblemDifficulty difficulty, string constraints, string hints, Author author, TimeLimit timeLimit, MemoryLimit memoryLimit, string solution, int testCaseCount, bool isAdminCreated, string descriptionImageUrl, string createdBy)

@@ -9,6 +9,8 @@ namespace CodingContest.Domain.Models
         public string HtmlTagColor { get; private set; }
         public bool IsActive { get; private set; }
 
+        public ICollection<ProblemTag> ProblemTags { get; private set; } = new List<ProblemTag>();
+
         private Tag() { }
 
         public static Tag Create(Guid id, string tagName, string htmlTagColor)

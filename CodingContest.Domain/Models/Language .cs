@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CodingContest.Domain.Abstractions;
 
 namespace CodingContest.Domain.Models
@@ -9,6 +10,7 @@ namespace CodingContest.Domain.Models
         public string DefaultCode { get; private set; }
         public bool IsActive { get; private set; }
 
+        public ICollection<ProblemLanguage> ProblemLanguages { get; private set; } = new List<ProblemLanguage>();
 
         private Language() { }
 

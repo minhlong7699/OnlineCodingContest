@@ -7,7 +7,7 @@ namespace CodingContest.Domain.Models
     {
         public Guid UserId { get; private set; }
         public Guid ProblemId { get; private set; }
-        public Guid ContestId { get; private set; }
+        public Guid? ContestId { get; private set; }
         public string Code { get; private set; }
         public string Language { get; private set; }
         public string Status { get; private set; }
@@ -16,6 +16,11 @@ namespace CodingContest.Domain.Models
         public float MemoryUsage { get; private set; }
         public string ErrorMessage { get; private set; }
 
+        public User User { get; private set; }
+        public Problem Problem { get; private set; }
+        public Contest? Contest { get; private set; }
+
+        public ICollection<ExecutionResult> ExecutionResults { get; private set; } = new List<ExecutionResult>();
         private Submission() { }
 
         public static Submission Create(Guid id, Guid userId, Guid problemId, Guid contestId, string code, string language, string status, int score, float executionTime, float memoryUsage, string errorMessage)

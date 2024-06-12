@@ -7,6 +7,9 @@ namespace CodingContest.Domain.Models
         public Guid ContestId { get; private set; }
         public Guid ProblemId { get; private set; }
 
+        public Contest Contest { get; private set; }
+        public Problem Problem { get; private set; }
+
         private ContestProblem() { }
 
         public ContestProblem(Guid contestId, Guid problemId)

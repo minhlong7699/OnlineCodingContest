@@ -9,6 +9,8 @@ namespace CodingContest.Domain.Models
         public Guid ProblemId { get; private set; }
         public DateTime SolvedDatetime { get; private set; }
         public string Status { get; private set; }
+        public User User { get; private set; }
+        public Problem Problem { get; private set; }
 
         private UserSolvedProblem() { }
 

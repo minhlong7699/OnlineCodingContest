@@ -10,6 +10,9 @@ namespace CodingContest.Domain.Models
         public int TotalScore { get; private set; }
         public float TotalExecutionTime { get; private set; }
 
+        public Contest Contest { get; private set; }
+        public User User { get; private set; }
+
         private ContestLeaderboard() { }
 
         public ContestLeaderboard(Guid contestId, Guid userId, int totalScore, float totalExecutionTime)

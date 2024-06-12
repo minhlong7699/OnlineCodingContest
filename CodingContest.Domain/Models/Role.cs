@@ -7,6 +7,8 @@ namespace CodingContest.Domain.Models
     {
         public string Name { get; private set; }
 
+        public ICollection<UserRole> UserRoles { get; private set; } = new List<UserRole>();
+
         private Role() { }
 
         public Role(Guid id, string name)

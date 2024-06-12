@@ -11,6 +11,9 @@ namespace CodingContest.Domain.Models
         public bool IsSample { get; private set; }
         public string Description { get; private set; }
 
+        public Problem Problem { get; private set; }
+
+        public ICollection<ExecutionResult> ExecutionResults { get; private set; } = new List<ExecutionResult>();
         private TestCase() { }
 
         public static TestCase Create(Guid id, Guid problemId, string testCaseInput, string expectedOutput, bool isSample, string description)
