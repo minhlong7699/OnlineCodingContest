@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace CodingContest.Infrastructure
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext , IApplicationDbContext
     {
         public DbSet<Problem> Problems => Set<Problem>();
         public DbSet<Contest> Contests => Set<Contest>();
@@ -36,6 +36,5 @@ namespace CodingContest.Infrastructure
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }
